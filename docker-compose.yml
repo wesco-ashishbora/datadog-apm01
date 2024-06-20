@@ -28,7 +28,3 @@ services:
       - "5000:5000"
     depends_on:
       - datadog-agent
-
-networks:
-  default:
-    name: datadog-net
