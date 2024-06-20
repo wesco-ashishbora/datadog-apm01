@@ -12,8 +12,6 @@ services:
       - "8126:8126"  # Expose port 8126 for APM
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - datadog-net
 
   python-api:
     build:
@@ -30,9 +28,8 @@ services:
       - "5000:5000"
     depends_on:
       - datadog-agent
-    networks:
-      - datadog-net
 
 networks:
-  datadog-net:
-    driver: bridge
+  default:
+    external:
+      name: datadog-net
